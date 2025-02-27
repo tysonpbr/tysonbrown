@@ -1,7 +1,7 @@
 'use client'
 import React, { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Preload, useGLTF, useProgress, useTexture  } from '@react-three/drei';
+import { OrbitControls, Preload, useGLTF, useProgress, useTexture } from '@react-three/drei';
 import { a, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
 
@@ -15,7 +15,7 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
     config: { mass: 1, tension: 170, friction: 26 },
   });
 
-  const numPlanes = 20;
+  const numPlanes = 10;
   const radius = 20;
   const center = new THREE.Vector3(0, 1.5, 0);
 
@@ -53,9 +53,9 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
   );
 };
 
-const HeroCanvas = ({ globePosition, globeScale, rotate }: { 
-  globePosition: [number, number, number]; 
-  globeScale: number; 
+const HeroCanvas = ({ globePosition, globeScale, rotate }: {
+  globePosition: [number, number, number];
+  globeScale: number;
   rotate: boolean;
 }) => {
   const [loading, setLoading] = useState(true);
@@ -86,12 +86,12 @@ const HeroCanvas = ({ globePosition, globeScale, rotate }: {
 
   return (
     <div className="relative w-full h-screen">
-      
-    <div className={`${!loading && 'pointer-events-none opacity-0'} fixed top-0 left-0 h-screen w-screen bg-black z-50 flex justify-center ease-in-out duration-1000`}>
-      <div className="text-white px-4 py-2 rounded-lg whitespace-nowrap self-center">
-        Loading... {displayProgress}%
+
+      <div className={`${!loading && 'pointer-events-none opacity-0'} fixed top-0 left-0 h-screen w-screen bg-black z-50 flex justify-center ease-in-out duration-1000`}>
+        <div className="text-white px-4 py-2 rounded-lg whitespace-nowrap self-center">
+          Loading... {displayProgress}%
+        </div>
       </div>
-    </div>
 
       <Canvas
         className="bg-black/95"
