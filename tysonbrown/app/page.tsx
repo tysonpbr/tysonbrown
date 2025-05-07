@@ -1,14 +1,16 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import HeroCanvas from "./components/HeroCanvas";
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar';
 import MouseInvertOverlay from './components/MouseInvertOverlay';
+import SideSlide from './components/SideSlide';
 
 export default function Home() {
   const [globePosition, setGlobePosition] = useState<[number, number, number]>([0, 10, 40]);
   const [globeScale, setGlobeScale] = useState(1);
   const [rotate, setRotate] = useState(true);
   const [makeSmall, setMakeSmall] = useState(false);
+  const [location, setLocation] = useState('Home');
 
   useEffect(() => {
     const handleEnter = () => setMakeSmall(true);
@@ -30,8 +32,9 @@ export default function Home() {
 
   return (
     <div className="w-screen h-screen bg-black relative overflow-hidden lg:invert">
+      <SideSlide location={location} />
       <MouseInvertOverlay makeSmall={makeSmall} />
-      <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} setRotate={setRotate} />
+      <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} setRotate={setRotate} location={location} setLocation={setLocation} />
       <HeroCanvas globePosition={globePosition} globeScale={globeScale} rotate={rotate} />
     </div>
   );

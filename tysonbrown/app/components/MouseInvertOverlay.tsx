@@ -38,7 +38,7 @@ const MouseInvertOverlay = ({ makeSmall }: { makeSmall: boolean }) => {
         }}
       >
         <div
-          className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-[800ms] ease-in-out"
+          className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-[400ms] ease-in-out"
           style={{
             width: `${size}px`,
             height: `${size}px`,

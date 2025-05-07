@@ -13,7 +13,7 @@ const HeroCanvas = ({ globePosition, globeScale, rotate }: {
 }) => {
   const [loading, setLoading] = useState(true);
   const [displayProgress, setDisplayProgress] = useState(0);
-  const [screenWidth, setScreenWidth] = useState<number | null>(null); // 👈 new
+  const [screenWidth, setScreenWidth] = useState<number | null>(null);
 
   const { progress } = useProgress();
 

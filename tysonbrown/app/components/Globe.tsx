@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Text } from '@react-three/drei';
@@ -65,15 +65,20 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
     return { position: position.toArray(), rotation };
   });
 
-  const textPosition = new THREE.Vector3(0, 300, 100);
-  const lookAtMatrix = new THREE.Matrix4();
-  lookAtMatrix.lookAt(textPosition, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0));
+  const createFacingTextQuaternion = (positionVec: THREE.Vector3) => {
+    const lookAtMatrix = new THREE.Matrix4();
+    lookAtMatrix.lookAt(positionVec, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0));
 
-  const textQuaternion = new THREE.Quaternion().setFromRotationMatrix(lookAtMatrix).invert();
+    return new THREE.Quaternion().setFromRotationMatrix(lookAtMatrix);
+  };
 
-  const flipX = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI);
-  textQuaternion.multiply(flipX);
+  const aboutTextPosition = new THREE.Vector3(0, 100, 100);
+  const titlePosition = new THREE.Vector3(0, 200, 100);
+  const contactPosition = new THREE.Vector3(0, 300, 100);
 
+  const aboutQuaternion = createFacingTextQuaternion(aboutTextPosition);
+  const titleQuaternion = createFacingTextQuaternion(titlePosition);
+  const contactQuaternion = createFacingTextQuaternion(contactPosition);
 
   return (
     <a.group position={animatedProps.position}>
@@ -90,14 +95,39 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
       </a.group>
 
       <Text
-        position={textPosition.toArray()}
-        quaternion={textQuaternion}
+        font="/fonts/JosefinSans-Bold.ttf"
+        position={titlePosition.toArray()}
+        quaternion={titleQuaternion}
+        fontSize={1.5}
+        color="#E9762B"
+        anchorX="center"
+        anchorY="middle"
+      >
+        MY PROJECTS
+      </Text>
+
+      <Text
+        font="/fonts/JosefinSans-Bold.ttf"
+        position={aboutTextPosition.toArray()}
+        quaternion={aboutQuaternion}
         fontSize={1}
-        color="white"
+        color="#E9762B"
         anchorX="center"
         anchorY="middle"
       >
         ABOUT ME
+      </Text>
+
+      <Text
+        font="/fonts/JosefinSans-Bold.ttf"
+        position={contactPosition.toArray()}
+        quaternion={contactQuaternion}
+        fontSize={1}
+        color="#E9762B"
+        anchorX="center"
+        anchorY="middle"
+      >
+        CONTACT ME
       </Text>
     </a.group>
   );
