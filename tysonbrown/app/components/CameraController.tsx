@@ -1,12 +1,12 @@
 'use client'
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import { useSpring } from '@react-spring/three';
 
 const CameraController = ({ globePosition }: { globePosition: [number, number, number] }) => {
   const { camera } = useThree();
 
-  const { position } = useSpring({
+  useSpring({
     position: globePosition,
     config: { mass: 1, tension: 170, friction: 26 },
     onChange: ({ value }) => {

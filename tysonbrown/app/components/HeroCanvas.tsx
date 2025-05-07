@@ -6,10 +6,9 @@ import { OrbitControls, Preload, useProgress } from '@react-three/drei';
 import CameraController from './CameraController';
 import Globe from './Globe';
 
-const HeroCanvas = ({ globePosition, globeScale, rotate }: {
+const HeroCanvas = ({ globePosition, globeScale }: {
   globePosition: [number, number, number];
   globeScale: number;
-  rotate: boolean;
 }) => {
   const [loading, setLoading] = useState(true);
   const [displayProgress, setDisplayProgress] = useState(0);
@@ -25,9 +24,7 @@ const HeroCanvas = ({ globePosition, globeScale, rotate }: {
   }, []);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       setDisplayProgress((prev) => {
         if (prev < Math.round(progress)) {
           if (prev + 1 === 100) {

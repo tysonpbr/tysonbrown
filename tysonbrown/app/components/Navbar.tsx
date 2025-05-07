@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-const Navbar = ({ setGlobePosition, setGlobeScale, setRotate, location, setLocation }: {
+const Navbar = ({ setGlobePosition, setGlobeScale, location, setLocation }: {
   setGlobePosition: React.Dispatch<React.SetStateAction<[number, number, number]>>;
   setGlobeScale: React.Dispatch<React.SetStateAction<number>>;
-  setRotate: React.Dispatch<React.SetStateAction<boolean>>;
   location: string;
   setLocation: React.Dispatch<React.SetStateAction<string>>;
 }) => {

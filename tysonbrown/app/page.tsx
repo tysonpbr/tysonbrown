@@ -8,7 +8,6 @@ import SideSlide from './components/SideSlide';
 export default function Home() {
   const [globePosition, setGlobePosition] = useState<[number, number, number]>([0, 10, 40]);
   const [globeScale, setGlobeScale] = useState(1);
-  const [rotate, setRotate] = useState(true);
   const [makeSmall, setMakeSmall] = useState(false);
   const [location, setLocation] = useState('Home');
 
@@ -34,8 +33,8 @@ export default function Home() {
     <div className="w-screen h-screen bg-black relative overflow-hidden lg:invert">
       <SideSlide location={location} />
       <MouseInvertOverlay makeSmall={makeSmall} />
-      <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} setRotate={setRotate} location={location} setLocation={setLocation} />
-      <HeroCanvas globePosition={globePosition} globeScale={globeScale} rotate={rotate} />
+      <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} location={location} setLocation={setLocation} />
+      <HeroCanvas globePosition={globePosition} globeScale={globeScale} />
     </div>
   );
 }

@@ -16,7 +16,7 @@ const SideSlide = ({ location }: { location: string }) => {
     const onWheel = (e: WheelEvent) => {
       if (e.deltaY === 0) return;
       e.preventDefault();
-      el.scrollLeft += e.deltaY / 2;
+      el.scrollLeft += e.deltaY;
     };
 
     el.addEventListener('wheel', onWheel, { passive: false });
@@ -46,7 +46,7 @@ const SideSlide = ({ location }: { location: string }) => {
         }, 1000);
       }
     }
-  }, [location]);
+  }, [location, link]);
 
   const renderContent = () => {
     switch (link) {
@@ -60,12 +60,12 @@ const SideSlide = ({ location }: { location: string }) => {
   };
 
   return (
-    <div className={`fixed top-[12vh] lg:top-[19vh] w-screen h-[78vh] lg:h-[67vh] z-[100] ${collapse ? 'left-0' : 'left-[100vw]'} duration-300 ease-in-out invert`}>
+    <div className={`fixed top-[15vh] lg:top-[19vh] w-screen h-[78vh] lg:h-[67vh] z-[50] ${collapse ? 'left-0' : 'left-[100vw]'} duration-300 ease-in-out`}>
       <div
         ref={scrollRef}
         className="w-screen h-[78vh] lg:h-[67vh] overflow-x-scroll overflow-y-hidden text-black"
       >
-        <div className="flex flex-row gap-8 w-max h-full px-8">
+        <div className="flex flex-row gap-16 lg:gap-16 w-max h-full px-8">
           {renderContent()}
         </div>
       </div>
