@@ -74,10 +74,10 @@ const Navbar = ({ setGlobePosition, setGlobeScale, location, setLocation }: {
 
   return (
     <div className="fixed top-0 left-0 z-20 p-8 pointer-events-auto scale">
-      <div className="text-[8vw] xl:text-[4vw] font-bold text-[#E9762B] leading-none">
+      <div className="text-[8vw] xl:text-[4vw] font-bold text-[#E9762B] leading-none invert sepia-[30%]">
         TYSON BROWN
       </div>
-      <div className="w-full flex justify-between px-4 lg:px-[3vw] text-white">
+      <div className="w-full flex justify-between px-4 lg:px-[3vw] text-black">
         {navLinks.map((link) => (
           <button
             key={link.text}

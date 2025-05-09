@@ -1,56 +1,77 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
-const MouseInvertOverlay = ({ makeSmall }: { makeSmall: boolean }) => {
+const MouseInvertOverlay = ({ makeSmall, onSideSlide }: { makeSmall: boolean; onSideSlide: boolean }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [maxDimension, setMaxDimension] = useState(0);
+  const targetPosition = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const updateSize = () => {
-      const max = Math.max(window.innerWidth, window.innerHeight);
-      setMaxDimension(max * 3);
+    let frameId: number;
+
+    const animate = () => {
+      setPosition((prev) => {
+        const lerpFactor = 0.1;
+        const x = prev.x + (targetPosition.current.x - prev.x) * lerpFactor;
+        const y = prev.y + (targetPosition.current.y - prev.y) * lerpFactor;
+        return { x, y };
+      });
+      frameId = requestAnimationFrame(animate);
     };
 
-    updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      targetPosition.current = { x: e.clientX, y: e.clientY };
     };
 
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
   }, []);
 
-  const size = makeSmall ? 150 : maxDimension;
+  const size = makeSmall ? 150 : 0;
+  const sizeCursor = makeSmall ? 150 : 30;
 
   return (
-    <>
+    <div
+      className="pointer-events-none fixed top-0 left-0 z-50 hidden lg:flex"
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        width: '0px',
+        height: '0px',
+      }}
+    >
       <div
-        className="pointer-events-none fixed top-0 left-0 z-50 hidden lg:flex"
+        className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-[300ms] ease-in-out"
         style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          width: '0px',
-          height: '0px',
+          width: `${size}px`,
+          height: `${size}px`,
+          borderRadius: '50%',
+          backgroundColor: 'rgba(255,255,255,0.001)',
+          backdropFilter: 'invert(1)',
+          WebkitBackdropFilter: 'invert(1)',
+          mixBlendMode: 'normal',
         }}
-      >
-        <div
-          className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-[400ms] ease-in-out"
-          style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            borderRadius: '50%',
-            backgroundColor: 'rgba(255,255,255,0.001)',
-            backdropFilter: 'invert(1)',
-            WebkitBackdropFilter: 'invert(1)',
-            mixBlendMode: 'normal',
-          }}
-        />
+      />
+
+      <div
+        className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-[300ms] ease-in-out border-1 border-black"
+        style={{
+          width: `${sizeCursor}px`,
+          height: `${sizeCursor}px`,
+          borderRadius: '50%',
+        }}
+      />
+
+      <div className={`${!onSideSlide && 'hidden'} pointer-events-none fixed -bottom-20 left-4 z-50 whitespace-nowrap bg-black text-white sepia-50 p-2 leading-none rounded flex flex-row gap-2 items-center `}>
+        Scroll For More
+        <div className='p-2 rounded bg-[#E9762B] text-black invert text-xl leading-none'>
+          ⇨
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

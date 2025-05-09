@@ -85,13 +85,13 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
       <a.group scale={animatedProps.scale} ref={globeRef}>
         <primitive object={globe.scene} />
 
-        {planeItems.map(({ position, rotation }, index) => (
+        {/* {planeItems.map(({ position, rotation }, index) => (
           <mesh key={index} position={position} quaternion={rotation}>
             <planeGeometry args={[5, 5]} />
             <meshBasicMaterial color="white" transparent opacity={0.5} />
             <meshBasicMaterial map={imageTexture} transparent />
           </mesh>
-        ))}
+        ))} */}
       </a.group>
 
       <Text

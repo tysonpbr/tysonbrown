@@ -4,9 +4,16 @@ import About from './About';
 import Projects from './Projects';
 import Contact from './Contact';
 
-const SideSlide = ({ location }: { location: string }) => {
-  const [link, setLink] = useState('Home')
+const SideSlide = ({
+  location,
+  setOnSideSlide,
+}: {
+  location: string;
+  setOnSideSlide: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const [link, setLink] = useState('Home');
   const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [collapse, setCollapse] = useState(false);
 
   useEffect(() => {
@@ -20,13 +27,13 @@ const SideSlide = ({ location }: { location: string }) => {
     };
 
     el.addEventListener('wheel', onWheel, { passive: false });
-
     return () => {
       el.removeEventListener('wheel', onWheel);
     };
   }, []);
 
   useEffect(() => {
+    if (location === 'Home') return;
     const timer = setTimeout(() => {
       setCollapse(true);
     }, 100);
@@ -36,17 +43,28 @@ const SideSlide = ({ location }: { location: string }) => {
   useEffect(() => {
     if (location != link) {
       setCollapse(false);
-      if (link == 'Home') {
-        setTimeout(() => {
-          setLink(location)
-        }, 500);
-      } else {
-        setTimeout(() => {
-          setLink(location)
-        }, 1000);
-      }
+      const delay = link == 'Home' ? 500 : 1000;
+      setTimeout(() => {
+        setLink(location);
+      }, delay);
     }
   }, [location, link]);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const handleEnter = () => setOnSideSlide(true);
+    const handleLeave = () => setOnSideSlide(false);
+
+    node.addEventListener('mouseenter', handleEnter);
+    node.addEventListener('mouseleave', handleLeave);
+
+    return () => {
+      node.removeEventListener('mouseenter', handleEnter);
+      node.removeEventListener('mouseleave', handleLeave);
+    };
+  }, [setOnSideSlide]);
 
   const renderContent = () => {
     switch (link) {
@@ -56,11 +74,16 @@ const SideSlide = ({ location }: { location: string }) => {
         return <Projects />;
       case 'Contact':
         return <Contact />;
+      default:
+        return null;
     }
   };
 
   return (
-    <div className={`fixed top-[15vh] lg:top-[19vh] w-screen h-[78vh] lg:h-[67vh] z-[50] ${collapse ? 'left-0' : 'left-[100vw]'} duration-300 ease-in-out`}>
+    <div
+      id="sideSlide"
+      ref={containerRef}
+      className={`fixed top-[15vh] lg:top-[19vh] w-screen h-[78vh] lg:h-[67vh] z-[50] ${collapse ? 'left-0' : 'left-[100vw]'} duration-300 ease-in-out`}>
       <div
         ref={scrollRef}
         className="w-screen h-[78vh] lg:h-[67vh] overflow-x-scroll overflow-y-hidden text-black"

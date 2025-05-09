@@ -10,6 +10,7 @@ export default function Home() {
   const [globeScale, setGlobeScale] = useState(1);
   const [makeSmall, setMakeSmall] = useState(false);
   const [location, setLocation] = useState('Home');
+  const [onSideSlide, setOnSideSlide] = useState(false);
 
   useEffect(() => {
     const handleEnter = () => setMakeSmall(true);
@@ -30,9 +31,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-black relative overflow-hidden lg:invert">
-      <SideSlide location={location} />
-      <MouseInvertOverlay makeSmall={makeSmall} />
+    <div className="w-screen h-screen bg-black relative overflow-hidden">
+      <SideSlide location={location} setOnSideSlide={setOnSideSlide} />
+      <MouseInvertOverlay makeSmall={makeSmall} onSideSlide={onSideSlide} />
       <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} location={location} setLocation={setLocation} />
       <HeroCanvas globePosition={globePosition} globeScale={globeScale} />
     </div>

@@ -8,3 +8,11 @@
 *::-webkit-scrollbar {
   display: none;
 }
+
+.body-text {
+  @apply text-xs lg:text-base 2xl:text-lg uppercase font-bold text-black;
+}
+
+.body-title {
+  @apply text-xs lg:text-sm 2xl:text-base text-black/70;
+}

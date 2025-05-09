@@ -5,6 +5,7 @@ import { OrbitControls, Preload, useProgress } from '@react-three/drei';
 
 import CameraController from './CameraController';
 import Globe from './Globe';
+import LoadingPage from './LoadingPage';
 
 const HeroCanvas = ({ globePosition, globeScale }: {
   globePosition: [number, number, number];
@@ -51,14 +52,10 @@ const HeroCanvas = ({ globePosition, globeScale }: {
 
   return (
     <div className="relative w-full h-screen">
-      <div className={`${!loading && 'pointer-events-none opacity-0'} fixed top-0 left-0 h-screen w-screen bg-black z-50 flex justify-center ease-in-out duration-1000 lg:invert`}>
-        <div className="text-white px-4 py-2 rounded-lg whitespace-nowrap self-center">
-          Loading... {displayProgress}%
-        </div>
-      </div>
+      <LoadingPage loading={loading} displayProgress={displayProgress} />
 
       <Canvas
-        className="bg-black/95"
+        className="bg-black invert sepia-[30%]"
         frameloop="always"
         dpr={[1, 2]}
         gl={{ preserveDrawingBuffer: true }}
