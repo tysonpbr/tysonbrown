@@ -4,7 +4,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <>
+    <div className='px-8 flex flex-row gap-16 lg:gap-16 w-max h-full'>
       <div className="h-full flex flex-col justify-start text-black gap-8  max-w-64">
 
         <div className=''>
@@ -123,7 +123,7 @@ const About = () => {
         <img src="about_3.jpg" className='object-contain w-full max-h-[35vh] lg:max-h-[30vh]' alt="Tyson Brown" />
         <img src="about_4.jpg" className='object-contain w-full max-h-[35vh] lg:max-h-[30vh]' alt="Tyson Brown" />
       </div>
-    </>
+    </div>
   );
 };
 

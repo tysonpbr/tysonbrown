@@ -45,14 +45,14 @@ const Projects = () => {
   ]
 
   return (
-    <>
+    <div className='px-8 flex flex-row gap-16 lg:gap-16 w-max h-full'>
       {projectsList.map((project, i) => (
         <div key={project.title} className='flex flex-row gap-16 lg:gap-16'>
           {i != 0 && <div className='h-full w-[1px] flex pb-8'><div className='bg-black rounded-full flex-1' /></div>}
           <ProjectCard project={project} />
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

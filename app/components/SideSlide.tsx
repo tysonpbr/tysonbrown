@@ -54,7 +54,11 @@ const SideSlide = ({
     const node = containerRef.current;
     if (!node) return;
 
-    const handleEnter = () => setOnSideSlide(true);
+    const handleEnter = () => {
+      if (location == 'About' || location == 'Projects') {
+        setOnSideSlide(true);
+      }
+    }
     const handleLeave = () => setOnSideSlide(false);
 
     node.addEventListener('mouseenter', handleEnter);
@@ -64,7 +68,7 @@ const SideSlide = ({
       node.removeEventListener('mouseenter', handleEnter);
       node.removeEventListener('mouseleave', handleLeave);
     };
-  }, [setOnSideSlide]);
+  }, [setOnSideSlide, location, link]);
 
   const renderContent = () => {
     switch (link) {
@@ -88,7 +92,7 @@ const SideSlide = ({
         ref={scrollRef}
         className="w-screen h-[78vh] lg:h-[67vh] overflow-x-scroll overflow-y-hidden text-black"
       >
-        <div className="flex flex-row gap-16 lg:gap-16 w-max h-full px-8">
+        <div className="flex flex-row gap-16 lg:gap-16 w-max h-full">
           {renderContent()}
         </div>
       </div>
