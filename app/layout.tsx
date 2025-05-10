@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   description: "My very own portfolio website",
 };
 
-// ✅ Add all your jpg / jpeg images here
 const preloadImages = [
   "/images/about_1.jpeg",
   "/images/about_2.jpeg",
