@@ -1,13 +1,12 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF, useTexture, Text } from '@react-three/drei';
+import { useGLTF, Text } from '@react-three/drei';
 import { a, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
 
 const Globe = ({ position, scale }: { position: [number, number, number]; scale: number }) => {
   const globe = useGLTF('./space_boi/scene.gltf');
-  const imageTexture = useTexture('./image.webp');
   const globeRef = useRef<THREE.Group>(null!);
   const [responsiveScale, setResponsiveScale] = useState(scale);
 
@@ -42,29 +41,6 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
     }
   });
 
-  const numPlanes = 10;
-  const radius = 20;
-  const center = new THREE.Vector3(0, 1.5, 0);
-
-  const planeItems = Array.from({ length: numPlanes }, (_, i) => {
-    const angle = (i / numPlanes) * Math.PI * 2;
-    const position = new THREE.Vector3(
-      radius * Math.cos(angle),
-      center.y,
-      radius * Math.sin(angle)
-    );
-
-    const lookAtMatrix = new THREE.Matrix4();
-    lookAtMatrix.lookAt(position, center, new THREE.Vector3(0, 1, 0));
-    const rotation = new THREE.Quaternion().setFromRotationMatrix(lookAtMatrix);
-
-    const flipQuaternion = new THREE.Quaternion();
-    flipQuaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
-    rotation.multiply(flipQuaternion);
-
-    return { position: position.toArray(), rotation };
-  });
-
   const createFacingTextQuaternion = (positionVec: THREE.Vector3) => {
     const lookAtMatrix = new THREE.Matrix4();
     lookAtMatrix.lookAt(positionVec, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0));
@@ -84,14 +60,6 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
     <a.group position={animatedProps.position}>
       <a.group scale={animatedProps.scale} ref={globeRef}>
         <primitive object={globe.scene} />
-
-        {/* {planeItems.map(({ position, rotation }, index) => (
-          <mesh key={index} position={position} quaternion={rotation}>
-            <planeGeometry args={[5, 5]} />
-            <meshBasicMaterial color="white" transparent opacity={0.5} />
-            <meshBasicMaterial map={imageTexture} transparent />
-          </mesh>
-        ))} */}
       </a.group>
 
       <Text

@@ -11,6 +11,7 @@ export default function Home() {
   const [makeSmall, setMakeSmall] = useState(false);
   const [location, setLocation] = useState('Home');
   const [onSideSlide, setOnSideSlide] = useState(false);
+  const [link, setLink] = useState('Home');
 
   useEffect(() => {
     const handleEnter = () => setMakeSmall(true);
@@ -28,11 +29,11 @@ export default function Home() {
         button.removeEventListener('mouseleave', handleLeave);
       });
     };
-  }, []);
+  }, [link, location]);
 
   return (
     <div className="w-screen h-screen bg-black relative overflow-hidden">
-      <SideSlide location={location} setOnSideSlide={setOnSideSlide} />
+      <SideSlide location={location} setOnSideSlide={setOnSideSlide} link={link} setLink={setLink} />
       <MouseInvertOverlay makeSmall={makeSmall} onSideSlide={onSideSlide} />
       <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} location={location} setLocation={setLocation} />
       <HeroCanvas globePosition={globePosition} globeScale={globeScale} />

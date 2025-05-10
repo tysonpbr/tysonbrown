@@ -65,7 +65,7 @@ const MouseInvertOverlay = ({ makeSmall, onSideSlide }: { makeSmall: boolean; on
         }}
       />
 
-      <div className={`${!onSideSlide && 'hidden'} pointer-events-none fixed -bottom-20 left-4 z-50 whitespace-nowrap bg-black text-white sepia-50 p-2 leading-none rounded flex flex-row gap-2 items-center `}>
+      <div className={`${!onSideSlide && 'hidden'} pointer-events-none fixed -bottom-20 left-4 z-50 whitespace-nowrap bg-black text-white sepia-[33%] p-2 leading-none rounded flex flex-row gap-2 items-center `}>
         Scroll For More
         <div className='p-2 rounded bg-[#E9762B] text-black invert text-xl leading-none'>
           ⇨

@@ -55,7 +55,7 @@ const HeroCanvas = ({ globePosition, globeScale }: {
       <LoadingPage loading={loading} displayProgress={displayProgress} />
 
       <Canvas
-        className="bg-black invert sepia-[30%]"
+        className="bg-black invert sepia-[33%]"
         frameloop="always"
         dpr={[1, 2]}
         gl={{ preserveDrawingBuffer: true }}
