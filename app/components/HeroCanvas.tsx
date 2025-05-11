@@ -51,7 +51,7 @@ const HeroCanvas = ({ globePosition, globeScale }: {
   const globeY = screenWidth < 1024 ? -1 : -2.4;
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-[100svh]">
       <LoadingPage loading={loading} displayProgress={displayProgress} />
 
       <Canvas

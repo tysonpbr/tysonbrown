@@ -40,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/tb_logo.png" type="image/png" />
+        <link rel="shortcut icon" href="/tb_logo.png" type="image/png" />
         {preloadImages.map((src) => (
           <link
             key={src}

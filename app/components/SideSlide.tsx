@@ -97,10 +97,11 @@ const SideSlide = ({
     <div
       id="sideSlide"
       ref={containerRef}
-      className={`flex flex-col fixed top-[12svh] lg:top-[19svh] w-screen h-[78svh] lg:h-[67svh] gap-[2svh] lg:gap-[2svh] z-[50] ${collapse ? 'left-0' : 'left-[100vw]'} duration-300 ease-in-out`}>
+      className={`flex flex-col fixed top-[14svh] lg:top-[19svh] w-screen h-[76svh] lg:h-[67svh] gap-[2svh] lg:gap-[2svh] z-[50] ${collapse ? 'left-0' : 'left-[100vw]'} duration-300 ease-in-out`}
+    >
       <div
         ref={scrollRef}
-        className="w-screen h-[78svh] lg:h-[60svh] overflow-x-scroll overflow-y-hidden text-black"
+        className="w-screen h-[69svh] lg:h-[60svh] overflow-x-scroll overflow-y-hidden text-black"
       >
         <div className="flex flex-row gap-16 lg:gap-16 w-max h-full">
           {renderContent()}

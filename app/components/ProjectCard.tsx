@@ -69,30 +69,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
       </div>
 
-      <div className="h-full max-h-[78svh] lg:max-h-[67svh] flex flex-col justify-start gap-8 max-w-[90vw] lg:max-w-128">
-        <img
-          src={project.images[0]}
-          className="object-contain w-full max-h-[35svh] lg:max-h-[30svh]"
-          alt={project.title + ' 1'}
-        />
-        <img
-          src={project.images[1]}
-          className="object-contain w-full max-h-[35svh] lg:max-h-[30svh]"
-          alt={project.title + ' 2'}
-        />
+      <div className="h-full max-h-[69svh] lg:max-h-[60svh] flex flex-col justify-start text-black gap-8  max-w-[90vw] lg:max-w-128">
+        <img src={project.images[0]} className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt={project.title + ' 1'} />
+        <img src={project.images[1]} className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt={project.title + ' 2'} />
       </div>
 
-      <div className="h-full max-h-[78svh] lg:max-h-[67svh] flex flex-col justify-start gap-8 max-w-[90vw] lg:max-w-128">
-        <img
-          src={project.images[2]}
-          className="object-contain w-full max-h-[35svh] lg:max-h-[30svh]"
-          alt={project.title + ' 3'}
-        />
-        <img
-          src={project.images[3]}
-          className="object-contain w-full max-h-[35svh] lg:max-h-[30svh]"
-          alt={project.title + ' 4'}
-        />
+      <div className="h-full max-h-[69svh] lg:max-h-[60svh] flex flex-col justify-start text-black gap-8  max-w-[90vw] lg:max-w-128">
+        <img src={project.images[2]} className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt={project.title + ' 3'} />
+        <img src={project.images[3]} className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt={project.title + ' 4'} />
       </div>
     </div>
   );

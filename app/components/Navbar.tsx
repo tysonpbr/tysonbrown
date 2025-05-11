@@ -82,7 +82,7 @@ const Navbar = ({ setGlobePosition, setGlobeScale, location, setLocation }: {
           <button
             key={link.text}
             onClick={link.function}
-            className={`cursor-pointer lg:py-[2svh] group flex-1`}
+            className={`cursor-pointer py-[2svh] group flex-1`}
           >
             <div className='group-hover:scale-200 ease-in-out duration-500 text-xs lg:text-[1.5svh] pointer-events-none'>
               {link.text}

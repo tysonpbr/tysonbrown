@@ -47,9 +47,9 @@ const About = () => {
 
 
 
-      <div className="h-full max-h-[78svh] lg:max-h-[67svh] flex flex-col justify-start gap-8 max-w-[90vw] lg:max-w-128">
-        <img src="about_1.jpeg" className='object-contain w-full max-h-[35svh] lg:max-h-[30svh]' alt="Tyson Brown" />
-        <img src="about_2.jpeg" className='object-contain w-full max-h-[35svh] lg:max-h-[30svh]' alt="Tyson Brown" />
+      <div className="h-full max-h-[69svh] lg:max-h-[60svh] flex flex-col justify-start gap-8 max-w-[90vw] lg:max-w-128">
+        <img src="about_1.jpeg" className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt="Tyson Brown" />
+        <img src="about_2.jpeg" className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt="Tyson Brown" />
       </div>
 
 
@@ -119,9 +119,9 @@ const About = () => {
 
 
 
-      <div className="h-full max-h-[78svh] lg:max-h-[67svh] flex flex-col justify-start text-black gap-8  max-w-[90vw] lg:max-w-128">
-        <img src="about_3.jpg" className='object-contain w-full max-h-[35svh] lg:max-h-[30svh]' alt="Tyson Brown" />
-        <img src="about_4.jpg" className='object-contain w-full max-h-[35svh] lg:max-h-[30svh]' alt="Tyson Brown" />
+      <div className="h-full max-h-[69svh] lg:max-h-[60svh] flex flex-col justify-start text-black gap-8  max-w-[90vw] lg:max-w-128">
+        <img src="about_3.jpg" className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt="Tyson Brown" />
+        <img src="about_4.jpg" className='object-contain w-full max-h-[33svh] lg:max-h-[28svh]' alt="Tyson Brown" />
       </div>
     </div>
   );

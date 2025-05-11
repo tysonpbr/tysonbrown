@@ -32,7 +32,7 @@ export default function Home() {
   }, [link, location]);
 
   return (
-    <div className="w-screen h-screen bg-black relative overflow-hidden">
+    <div className="w-screen h-[100svh] bg-black relative overflow-hidden">
       <SideSlide location={location} setOnSideSlide={setOnSideSlide} link={link} setLink={setLink} />
       <MouseInvertOverlay makeSmall={makeSmall} onSideSlide={onSideSlide} />
       <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} location={location} setLocation={setLocation} />

@@ -129,7 +129,9 @@ const ScrollProgressBar = ({ scrollRef }: {
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
         onClick={(e) => e.stopPropagation()}
-      ></div>
+      >
+        <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 cursor-grab active:cursor-grabbing transform rounded-full w-[10svh] h-[10svh] bg-none' />
+      </div>
     </div>
   );
 };
