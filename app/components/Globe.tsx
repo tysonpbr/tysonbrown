@@ -37,7 +37,11 @@ const Globe = ({ position, scale }: { position: [number, number, number]; scale:
 
   useFrame(() => {
     if (globeRef.current) {
-      globeRef.current.rotation.y += 0.003;
+      if (window.innerWidth < 1024) {
+        globeRef.current.rotation.y += 0.005;
+      } else {
+        globeRef.current.rotation.y += 0.0005;
+      }
     }
   });
 
