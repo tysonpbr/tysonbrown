@@ -10,7 +10,7 @@ const MouseInvertOverlay = ({ makeSmall, onSideSlide }: { makeSmall: boolean; on
 
     const animate = () => {
       setPosition((prev) => {
-        const lerpFactor = 0.1;
+        const lerpFactor = 0.2;
         const x = prev.x + (targetPosition.current.x - prev.x) * lerpFactor;
         const y = prev.y + (targetPosition.current.y - prev.y) * lerpFactor;
         return { x, y };

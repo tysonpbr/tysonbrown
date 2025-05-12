@@ -18,7 +18,10 @@ const Navbar = ({ setGlobePosition, setGlobeScale, location, setLocation }: {
         setGlobePosition(desktop);
       }
       setGlobeScale(1);
-      setInUse(false)
+
+      setTimeout(() => {
+        setInUse(false)
+      }, 1000);
     } else {
       setLocation(title);
       setTimeout(() => {
@@ -28,7 +31,10 @@ const Navbar = ({ setGlobePosition, setGlobeScale, location, setLocation }: {
           setGlobePosition(desktop);
         }
         setGlobeScale(1);
-        setInUse(false)
+
+        setTimeout(() => {
+          setInUse(false)
+        }, 1000);
       }, 500);
     }
   }
