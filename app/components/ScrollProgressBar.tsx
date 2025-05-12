@@ -123,7 +123,7 @@ const ScrollProgressBar = ({ scrollRef }: {
     >
       <div className="absolute top-1/2 left-0 w-full h-[3svh] bg-slate-300 shadow-inner transform -translate-y-1/2 rounded-full"></div>
 
-      <div
+      <button
         className="absolute top-1/2 w-[3svh] h-[3svh] bg-[#E9762B] invert rounded-full cursor-grab active:cursor-grabbing transform -translate-y-1/2 drop-shadow-lg"
         style={{ left: `${progress * (barSize.bar - barSize.circle)}px` }}
         onMouseDown={handleMouseDown}
@@ -131,7 +131,7 @@ const ScrollProgressBar = ({ scrollRef }: {
         onClick={(e) => e.stopPropagation()}
       >
         <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 cursor-grab active:cursor-grabbing transform rounded-full w-[10svh] h-[10svh] bg-none' />
-      </div>
+      </button>
     </div>
   );
 };

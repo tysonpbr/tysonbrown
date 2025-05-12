@@ -55,7 +55,7 @@ const SideSlide = ({
   }, [location, link]);
 
   useEffect(() => {
-    const node = containerRef.current;
+    const node = scrollRef.current;
     if (!node) return;
 
     const handleEnter = () => {

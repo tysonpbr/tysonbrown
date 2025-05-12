@@ -14,22 +14,22 @@ export const metadata: Metadata = {
 };
 
 const preloadImages = [
-  "/images/about_1.jpeg",
-  "/images/about_2.jpeg",
-  "/images/about_3.jpg",
-  "/images/about_4.jpg",
-  "/images/kaizen_1.jpg",
-  "/images/kaizen_2.jpg",
-  "/images/kaizen_3.jpg",
-  "/images/kaizen_4.jpg",
-  "/images/korotu_1.jpg",
-  "/images/korotu_2.jpg",
-  "/images/korotu_3.jpg",
-  "/images/korotu_4.jpg",
-  "/images/sn_1.jpg",
-  "/images/sn_2.jpg",
-  "/images/sn_3.jpg",
-  "/images/sn_4.jpg",
+  "/about_1.jpeg",
+  "/about_2.jpeg",
+  "/about_3.jpg",
+  "/about_4.jpg",
+  "/kaizen_1.jpg",
+  "/kaizen_2.jpg",
+  "/kaizen_3.jpg",
+  "/kaizen_4.jpg",
+  "/korotu_1.jpg",
+  "/korotu_2.jpg",
+  "/korotu_3.jpg",
+  "/korotu_4.jpg",
+  "/sn_1.jpg",
+  "/sn_2.jpg",
+  "/sn_3.jpg",
+  "/sn_4.jpg",
 ];
 
 export default function RootLayout({
@@ -48,7 +48,7 @@ export default function RootLayout({
             rel="preload"
             as="image"
             href={src}
-            type={src.endsWith(".jpeg") ? "image/jpeg" : "image/jpg"}
+            type="image/jpeg"
           />
         ))}
       </head>
