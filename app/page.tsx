@@ -4,6 +4,7 @@ import HeroCanvas from "./components/HeroCanvas";
 import Navbar from './components/Navbar';
 import MouseInvertOverlay from './components/MouseInvertOverlay';
 import SideSlide from './components/SideSlide';
+import GetStartedMobile from './components/GetStartedMobile';
 
 export default function Home() {
   const [globePosition, setGlobePosition] = useState<[number, number, number]>([0, 10, 40]);
@@ -34,9 +35,10 @@ export default function Home() {
   return (
     <div className="w-screen h-[100svh] bg-black relative overflow-hidden">
       <SideSlide location={location} setOnSideSlide={setOnSideSlide} link={link} setLink={setLink} />
-      <MouseInvertOverlay makeSmall={makeSmall} onSideSlide={onSideSlide} />
+      <MouseInvertOverlay makeSmall={makeSmall} onSideSlide={onSideSlide} location={location} />
       <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} location={location} setLocation={setLocation} />
       <HeroCanvas globePosition={globePosition} globeScale={globeScale} />
+      <GetStartedMobile location={location} />
     </div>
   );
 }

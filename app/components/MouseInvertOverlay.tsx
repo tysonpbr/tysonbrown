@@ -1,7 +1,11 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 
-const MouseInvertOverlay = ({ makeSmall, onSideSlide }: { makeSmall: boolean; onSideSlide: boolean }) => {
+const MouseInvertOverlay = ({ makeSmall, onSideSlide, location }: {
+  makeSmall: boolean,
+  onSideSlide: boolean,
+  location: string,
+}) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const targetPosition = useRef({ x: 0, y: 0 });
 
@@ -69,6 +73,15 @@ const MouseInvertOverlay = ({ makeSmall, onSideSlide }: { makeSmall: boolean; on
         Scroll For More
         <div className='p-2 rounded bg-[#E9762B] text-black invert text-xl leading-none'>
           ⇨
+        </div>
+      </div>
+
+      <div className={`${location != 'Home' && 'hidden'} pointer-events-none fixed -bottom-40 w-64 left-4 z-50 bg-black text-white sepia-[33%] p-4 leading-none rounded flex flex-col gap-2 items-start `}>
+        <div className='whitespace-nowrap text-start font-bold text-xl'>
+          Hey there!
+        </div>
+        <div className='text-base'>
+          Thanks for dropping in. To get started, click one of the options in the navbar above.
         </div>
       </div>
     </div>
