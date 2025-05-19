@@ -49,7 +49,7 @@ const MouseInvertOverlay = ({ makeSmall, onSideSlide, location }: {
 
   return (
     <div
-      className={`pointer-events-none fixed top-0 left-0 z-50 lg:flex transition-opacity duration-800 ease-in-out ${visible ? 'opacity-100' : 'opacity-0'
+      className={`pointer-events-none fixed top-0 left-0 z-50 hidden lg:flex transition-opacity duration-800 ease-in-out ${visible ? 'opacity-100' : 'opacity-0'
         }`}
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`,
