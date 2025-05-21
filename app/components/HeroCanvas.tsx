@@ -7,11 +7,12 @@ import CameraController from './CameraController';
 import Globe from './Globe';
 import LoadingPage from './LoadingPage';
 
-const HeroCanvas = ({ globePosition, globeScale }: {
+const HeroCanvas = ({ globePosition, globeScale, loading, setLoading }: {
   globePosition: [number, number, number];
   globeScale: number;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [loading, setLoading] = useState(true);
   const [displayProgress, setDisplayProgress] = useState(0);
   const [screenWidth, setScreenWidth] = useState<number | null>(null);
 

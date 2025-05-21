@@ -13,6 +13,7 @@ export default function Home() {
   const [location, setLocation] = useState('Home');
   const [onSideSlide, setOnSideSlide] = useState(false);
   const [link, setLink] = useState('Home');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleEnter = () => setMakeSmall(true);
@@ -37,8 +38,10 @@ export default function Home() {
       <SideSlide location={location} setOnSideSlide={setOnSideSlide} link={link} setLink={setLink} />
       <MouseInvertOverlay makeSmall={makeSmall} onSideSlide={onSideSlide} location={location} />
       <Navbar setGlobePosition={setGlobePosition} setGlobeScale={setGlobeScale} location={location} setLocation={setLocation} />
-      <HeroCanvas globePosition={globePosition} globeScale={globeScale} />
-      <GetStartedMobile location={location} />
+      <HeroCanvas globePosition={globePosition} globeScale={globeScale} loading={loading} setLoading={setLoading} />
+      {!loading &&
+        <GetStartedMobile location={location} />
+      }
     </div>
   );
 }
